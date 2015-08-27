@@ -6,26 +6,55 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 自动扫描的包名 -->
+    <context:annotation-config></context:annotation-config>
     <context:component-scan base-package="me.antinomy.controllers" />
 
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven />
 
     <!-- 视图解释类 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/frontend/views/" />-->
+        <!--<property name="suffix" value=".jsp" />-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
+    <!--</bean>-->
+    <bean id="templateLoader" class="de.neuland.jade4j.spring.template.SpringTemplateLoader">
+        <property name="basePath" value="/frontend/views/" />
+    </bean>
+
+    <bean id="jadeConfiguration" class="de.neuland.jade4j.JadeConfiguration">
+        <property name="prettyPrint" value="false" />
+        <property name="caching" value="false" />
+        <property name="templateLoader" ref="templateLoader" />
+    </bean>
+
+    <bean id="viewResolver" class="de.neuland.jade4j.spring.view.JadeViewResolver">
+        <property name="configuration" ref="jadeConfiguration" />
+        <property name="renderExceptions" value="true" />
     </bean>
 
     <!-- 拦截器 -->
-    <mvc:interceptors>
-        <bean class="me.antinomy.init.GlobalInterceptor" />
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<bean class="me.antinomy.init.GlobalInterceptor" />-->
+    <!--</mvc:interceptors>-->
 
     <!-- 对静态资源文件的访问 -->
-    <mvc:resources mapping="/images/**" location="/resources/images/" cache-period="31556926" />
-    <mvc:resources mapping="/css/**" location="/resources/css/" cache-period="31556926" />
-    <mvc:resources mapping="/js/**" location="/resources/js" cache-period="31556926" />
+    <mvc:resources mapping="/images/**" location="/frontend/images/" cache-period="31556926" />
+    <mvc:resources mapping="/bootstrap/**" location="/frontend/node_modules/bootstrap/" cache-period="31556926" />
+    <mvc:resources mapping="/css/**" location="/frontend/css/" cache-period="31556926" />
+    <mvc:resources mapping="/js/**" location="/frontend/js/" cache-period="31556926" />
+    <!--<mvc:resources mapping="/sass/**" location="/frontend/sass/" cache-period="31556926" />-->
 
+    <!-- 全局异常处理 -->
+    <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+        <!--<property name="defaultErrorView">-->
+            <!--<value>/frontend/404</value>-->
+        <!--</property>-->
+        <!--<property name="defaultStatusCode">-->
+            <!--<value>404</value>-->
+        <!--</property>-->
+        <!--<property name="warnLogCategory">-->
+            <!--<value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver</value>-->
+        <!--</property>-->
+    <!--</bean>-->
 </beans>

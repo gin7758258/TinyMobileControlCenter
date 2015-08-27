@@ -1,0 +1,88 @@
+extends common/layout
+- var title = "Example Page."
+- var rows = [1, 2, 3]
+- var cols = [1, 2, 3]
+block append headBlock
+block append bodyBlock
+    <!--[if lt IE 7]>
+    p.browsehappy You are using an <strong>outdated</strong> browser.
+    <![endif]-->
+
+    div.container
+        header
+            h1 Example Page
+            p This is a <mark>example</mark> page for <abbr>GinFrontEndFramework<abbr>.
+        section
+            hr
+            h2 Standard Color
+            div.well
+                div.row
+                    div.col-sm-5
+                        p.text-muted This text is muted.
+                        p.text-primary This text is important.
+                        p.text-success This text indicates success.
+                        p.text-info This text represents some information.
+                        p.text-warning This text represents a warning.
+                        p.text-danger This text represents danger.
+                    div.col-sm-5
+                        p.bg-primary This text is important.
+                        p.bg-success This text indicates success.
+                        p.bg-info This text represents some information.
+                        p.bg-warning This text represents a warning.
+                        p.bg-danger This text represents danger.
+        section
+            hr
+            h2 Grid Demo
+            div.well
+
+                //- for row in rows
+                //    div.row
+                //    - for col in cols
+                //        - var attis = {"class":"mycol_" + row + "_" + col}
+                //        - if (row != 0)
+                //    div.col-md-4&attributes(attis)
+                //        span= row + " * " + col
+        //section
+        //    hr
+        //    h2 Table Demo
+        //    - var tableDatas = [{"Firstname":"John", "Lastname":"Doe", "Emall":"john@example.com"},{"Firstname":"Mary", "Lastname":"Moe", "Emall":"mary@example.com"},{"Firstname":"July", "Lastname":"Dooley", "Emall":"july@example.com"}];
+        //    table.table.table-striped.table-bordered
+        //        thead
+        //            tr
+        //                each val, key in tableDatas[0]
+        //                    th= key
+        //        tbody
+        //            - for tableData in tableDatas
+        //                tr
+        //                each val,key in tableData
+        //                    td= val
+        section
+            hr
+            h2 Glyphicon
+            | <p>Envelope icon: <span class="glyphicon glyphicon-envelope"></span></p>
+            <p>Envelope icon as a link:
+            <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
+            </p>
+            <p>Search icon: <span class="glyphicon glyphicon-search"></span></p>
+            <p>Search icon on a button:
+            <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+            </p>
+            <p>Search icon on a styled button:
+            <button type="button" class="btn btn-info">
+            <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+            </p>
+            <p>Print icon: <span class="glyphicon glyphicon-print"></span></p>
+            <p>Print icon on a styled link button:
+            <a href="#" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-print"></span> Print
+            </a>
+            </p>
+        footer.well.text-right
+            a(href="http://www.w3schools.com/bootstrap/default.asp") Learn Bootstrip.
+            br/
+            a(href="mailto:fan_liangbin@huateng.com") fan_liangbin@huateng.com
+    script(src="js/plugins.js")
+    script(src="js/main.js")

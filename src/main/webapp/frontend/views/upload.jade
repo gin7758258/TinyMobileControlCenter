@@ -1,0 +1,25 @@
+extends common/layout
+
+block append bodyBlock
+    div.panel-body
+        form#firstUpdateForm.form-horizontal(action=baseURL+"/upload/firstUpload", method="post", enctype="multipart/form-data", role="form")
+            div.modal-body
+                div.form-group
+                    label.col-sm-3.control-label 上传文件
+                div.col-sm-5
+                    input#logFile(type="file", name="logFile")
+                div.col-sm-5
+                    input#appid(type="text", name="appid")
+            div.modal-footer
+                div=result
+                div=message
+                if result
+                    div#firstUploadSucceed(style="display:none")
+                        strong 新增成功!
+                        span#firstUploadSucceedMsg=message
+                else
+                    div#firstUploadFailed(style="display:none")
+                        strong 对不起！新增失败
+                        span#firstUploadFailedMsg=message
+                button#createPeriadBtn.btn.btn-default(type="submit") 确定
+        iframe#hidden_frame(name="hidden_frame", style="display:none")

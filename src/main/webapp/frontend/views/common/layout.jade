@@ -18,19 +18,19 @@ html(class="no-js", lang="zh") <!--<![endif]-->
         meta(name="description", content="")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         //Place favicon.ico and apple-touch-icon.png in the root directory
-        link(rel="stylesheet", href="css/normalize.css")
-        link(rel="stylesheet", href="css/main.css")
-        script(src="js/vendor/modernizr-2.6.2.min.js")
+        link(rel="stylesheet", href=baseURL+"/css/normalize.css")
+        link(rel="stylesheet", href=baseURL+"/css/main.css")
+        script(src=baseURL+"/js/vendor/modernizr-2.6.2.min.js")
         //jQuery
         <!--[if lt IE 9]>
-        <script src="js/vendor/jquery-1.11.3.min.js"></script>
+        <script src=baseURL+"/js/vendor/jquery-1.11.3.min.js"></script>
         <![endif]-->
         <!--[if gt IE 8><!-->
-        script(src="js/vendor/jquery-2.1.4.min.js")
+        script(src=baseURL+"/js/vendor/jquery-2.1.4.min.js")
         <!--<![endif]-->
         //Bootstrap
-        link(rel="styleSheet", href="bootstrap/dist/css/bootstrap.min.css")
-        style(src="bootstrap/dist/js/bootstrap.min.js")
+        link(rel="styleSheet", href=baseURL+"/bootstrap/dist/css/bootstrap.min.css")
+        style(src=baseURL+"/bootstrap/dist/js/bootstrap.min.js")
         block headBlock
     block bodyBlock
         body

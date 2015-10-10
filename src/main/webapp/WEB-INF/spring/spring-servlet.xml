@@ -7,7 +7,8 @@
 
     <!-- 自动扫描的包名 -->
     <context:annotation-config></context:annotation-config>
-    <context:component-scan base-package="me.antinomy.controllers" />
+    <context:component-scan base-package="me.antinomy.**.controller, me.antinomy.service">
+    </context:component-scan>
 
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven />
@@ -57,4 +58,7 @@
             <!--<value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver</value>-->
         <!--</property>-->
     <!--</bean>-->
+
+    <!--<bean id="validator"-->
+          <!--class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />-->
 </beans>
